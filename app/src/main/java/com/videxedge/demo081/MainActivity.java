@@ -6,7 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+/**
+ * Demo project for Listeners
+ *
+ * @author      Albert Levy <albert.school2015@gmail.com>
+ * @version     1.2 (Include both methods)
+ * @since       21/8/2019
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     TextView tV;
@@ -17,12 +23,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+/**
+ * Init parameters
+ */
         tV = (TextView) findViewById(R.id.tV);
         btnsingle = (Button) findViewById(R.id.btnsingle);
         btndouble = (Button) findViewById(R.id.btndouble);
         i=0;
-
+/**
+ * 1st way: set the Listener & the relevant method in the same line
+ */
         btnsingle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,13 +40,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 tV.setText(""+i);
             }
         });
-
+/**
+ * 2nd way, 1st part: set the Listener to the widget
+ */
         btndouble.setOnClickListener(this);
     }
-
-    @Override
+/**
+ * 2nd way, 2nd part: set the method for the Listener
+ */
+   @Override
     public void onClick(View view) {
-        i=i+2;
+        i+=2;
         tV.setText(""+i);
     }
 }
